@@ -1,0 +1,16 @@
+[
+{
+  "modid": "artisanintegrations",
+  "name": "Artisan Integrations",
+  "description": "Contains mod compatibility features for Artisan Worktables.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["codetaylor"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

@@ -1,0 +1,23 @@
+package com.codetaylor.mc.artisanintegrations.modules.reskillable.requirement;
+
+import codersafterdark.reskillable.api.data.PlayerData;
+import codersafterdark.reskillable.api.data.PlayerDataHandler;
+import com.codetaylor.mc.artisanworktables.api.internal.recipe.ICraftingContext;
+import com.codetaylor.mc.artisanworktables.api.recipe.requirement.IRequirementContext;
+
+public class ReskillableRequirementContext
+    implements IRequirementContext {
+
+  private PlayerData playerData;
+
+  @Override
+  public void initialize(ICraftingContext craftingContext) {
+
+    this.playerData = PlayerDataHandler.get(craftingContext.getPlayer());
+  }
+
+  /* package */ PlayerData getPlayerData() {
+
+    return this.playerData;
+  }
+}
