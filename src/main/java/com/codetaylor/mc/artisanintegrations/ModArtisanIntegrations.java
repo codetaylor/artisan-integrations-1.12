@@ -1,5 +1,6 @@
 package com.codetaylor.mc.artisanintegrations;
 
+import com.codetaylor.mc.artisanintegrations.modules.botania.ModuleBotania;
 import com.codetaylor.mc.artisanintegrations.modules.gamestages.ModuleGameStages;
 import com.codetaylor.mc.artisanintegrations.modules.gregtech.ModuleGregTech;
 import com.codetaylor.mc.artisanintegrations.modules.reskillable.ModuleReskillable;
@@ -50,6 +51,10 @@ public class ModArtisanIntegrations {
 
     if (Loader.isModLoaded("gregtech")) {
       this.moduleManager.registerModules(ModuleGregTech.class);
+    }
+
+    if (Loader.isModLoaded("botania")) {
+      this.moduleManager.registerModules(ModuleBotania.class);
     }
 
     this.moduleManager.onConstructionEvent();

@@ -1,12 +1,13 @@
-package com.codetaylor.mc.artisanintegrations.modules.gregtech;
+package com.codetaylor.mc.artisanintegrations.modules.gregtech.tool;
 
 import com.codetaylor.mc.artisanworktables.api.recipe.IToolHandler;
 import gregtech.api.items.IToolItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class GTCEToolHandler
+public class ToolHandler
     implements IToolHandler {
 
   @Override
@@ -22,7 +23,7 @@ public class GTCEToolHandler
   }
 
   @Override
-  public boolean applyDamage(World world, ItemStack itemStack, int damage, boolean simulate) {
+  public boolean applyDamage(World world, ItemStack itemStack, int damage, EntityPlayer player, boolean simulate) {
 
     // The server tag object for the stack is ending up on the client in
     // a single player setup. The same instance - so any changes made on the

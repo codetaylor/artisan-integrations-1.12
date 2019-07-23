@@ -1,8 +1,8 @@
 package com.codetaylor.mc.artisanintegrations.modules.reskillable;
 
+import com.codetaylor.mc.artisanintegrations.ModArtisanIntegrations;
 import com.codetaylor.mc.artisanintegrations.modules.reskillable.requirement.ReskillableRequirementBuilder;
 import com.codetaylor.mc.artisanintegrations.modules.reskillable.requirement.ReskillableRequirementContext;
-import com.codetaylor.mc.artisanworktables.ModArtisanWorktables;
 import com.codetaylor.mc.artisanworktables.api.recipe.requirement.RequirementBuilderSupplier;
 import com.codetaylor.mc.artisanworktables.api.recipe.requirement.RequirementContextSupplier;
 import com.codetaylor.mc.athenaeum.module.ModuleBase;
@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class ModuleReskillable
     extends ModuleBase {
 
-  public static final String MOD_ID = ModArtisanWorktables.MOD_ID;
+  public static final String MOD_ID = ModArtisanIntegrations.MOD_ID;
 
   public ModuleReskillable() {
 
