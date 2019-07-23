@@ -1,9 +1,9 @@
 1.0.0
 
     * Added:
-        * GT:CE compatibility
-        * GameStages compatibility
-        * Reskillable compatibility
+        * GT:CE tool handler
+        * GameStages recipe requirement
+        * Reskillable recipe requirement
 
 ---
 
