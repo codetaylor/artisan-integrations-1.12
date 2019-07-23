@@ -1,9 +1,9 @@
 1.0.0
 
     * Added:
-        * GT:CE tool handler
-        * GameStages recipe requirement
-        * Reskillable recipe requirement
+        * GTCE tool handler: use GT tools
+        * GameStages recipe requirement: lock recipes behind gamestages
+        * Reskillable recipe requirement: lock recipes behind reskillable
 
 ---
 
