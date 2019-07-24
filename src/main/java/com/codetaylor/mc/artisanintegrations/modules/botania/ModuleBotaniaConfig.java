@@ -6,8 +6,8 @@ import net.minecraftforge.common.config.Config;
 public class ModuleBotaniaConfig {
 
   @Config.Comment({
-      "The amount of mana to charge per damage.",
+      "The amount of mana to charge per damage when repairing mana tools and crafting.",
       "Default: " + 60
   })
-  public static int MANA_PER_DAMAGE = 60;
+  public static int MANA_PER_TOOL_DAMAGE = 60;
 }

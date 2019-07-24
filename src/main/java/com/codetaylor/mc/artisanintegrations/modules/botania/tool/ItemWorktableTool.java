@@ -40,7 +40,7 @@ public class ItemWorktableTool
     if (!world.isRemote
         && player instanceof EntityPlayer
         && stack.getItemDamage() > 0
-        && ManaItemHandler.requestManaExactForTool(stack, (EntityPlayer) player, ModuleBotaniaConfig.MANA_PER_DAMAGE * 2, true)) {
+        && ManaItemHandler.requestManaExactForTool(stack, (EntityPlayer) player, ModuleBotaniaConfig.MANA_PER_TOOL_DAMAGE * 2, true)) {
       stack.setItemDamage(stack.getItemDamage() - 1);
     }
   }
