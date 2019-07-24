@@ -1,17 +1,22 @@
 package com.codetaylor.mc.artisanintegrations;
 
 import com.codetaylor.mc.artisanintegrations.modules.botania.ModuleBotania;
+import com.codetaylor.mc.artisanintegrations.modules.ftgu.ModuleFTGU;
 import com.codetaylor.mc.artisanintegrations.modules.gamestages.ModuleGameStages;
 import com.codetaylor.mc.artisanintegrations.modules.gregtech.ModuleGregTech;
 import com.codetaylor.mc.artisanintegrations.modules.reskillable.ModuleReskillable;
 import com.codetaylor.mc.artisanworktables.modules.worktables.ModuleWorktables;
 import com.codetaylor.mc.athenaeum.gui.GuiHandler;
+import com.codetaylor.mc.athenaeum.module.ModuleBase;
 import com.codetaylor.mc.athenaeum.module.ModuleManager;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 @SuppressWarnings({"WeakerAccess", "unused"})
 @Mod(
@@ -41,21 +46,20 @@ public class ModArtisanIntegrations {
   @Mod.EventHandler
   public void onConstructionEvent(FMLConstructionEvent event) {
 
-    if (Loader.isModLoaded("gamestages")) {
-      this.moduleManager.registerModules(ModuleGameStages.class);
-    }
+    Map<String, Class<? extends ModuleBase>> register = new LinkedHashMap<>();
 
-    if (Loader.isModLoaded("reskillable")) {
-      this.moduleManager.registerModules(ModuleReskillable.class);
-    }
+    register.put("gamestages", ModuleGameStages.class);
+    register.put("reskillable", ModuleReskillable.class);
+    register.put("gregtech", ModuleGregTech.class);
+    register.put("botania", ModuleBotania.class);
+    register.put("ftgumod", ModuleFTGU.class);
 
-    if (Loader.isModLoaded("gregtech")) {
-      this.moduleManager.registerModules(ModuleGregTech.class);
-    }
+    register.forEach((key, value) -> {
 
-    if (Loader.isModLoaded("botania")) {
-      this.moduleManager.registerModules(ModuleBotania.class);
-    }
+      if (Loader.isModLoaded(key)) {
+        this.moduleManager.registerModules(value);
+      }
+    });
 
     this.moduleManager.onConstructionEvent();
     this.moduleManager.routeFMLStateEvent(event);

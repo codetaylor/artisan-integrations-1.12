@@ -88,6 +88,7 @@ dependencies {
     compile project(":artisan-worktables")
     compile name: "gregtech-1.12.2-1.8.1.404"
     compile name: "Botania+r1.10-361"
+    compile name: "ftgu-1.12.2-b1.3.15"
     deobfCompile "codersafterdark.reskillable:Reskillable:1.12.2-1.12.5-SNAPSHOT.126"
 }
 
