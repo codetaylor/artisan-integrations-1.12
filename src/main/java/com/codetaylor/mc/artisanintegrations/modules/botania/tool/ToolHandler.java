@@ -27,6 +27,12 @@ public class ToolHandler
   public boolean applyDamage(World world, ItemStack itemStack, int damage, EntityPlayer player, boolean simulate) {
 
     ToolCommons.damageItem(itemStack, damage, player, ModuleBotaniaConfig.MANA_PER_DAMAGE);
-    return false;
+    boolean broken = itemStack.getMaxDamage() == itemStack.getItemDamage();
+
+    if (broken) {
+      itemStack.shrink(1);
+    }
+
+    return broken;
   }
 }
