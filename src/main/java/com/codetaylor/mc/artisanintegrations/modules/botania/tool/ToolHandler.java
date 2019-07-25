@@ -1,12 +1,13 @@
 package com.codetaylor.mc.artisanintegrations.modules.botania.tool;
 
 import com.codetaylor.mc.artisanintegrations.modules.botania.ModuleBotaniaConfig;
+import com.codetaylor.mc.artisanworktables.api.recipe.DefaultToolHandler;
 import com.codetaylor.mc.artisanworktables.api.recipe.IToolHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import vazkii.botania.api.mana.IManaUsingItem;
-import vazkii.botania.common.item.equipment.tool.ToolCommons;
+import vazkii.botania.api.mana.ManaItemHandler;
 
 public class ToolHandler
     implements IToolHandler {
@@ -26,13 +27,22 @@ public class ToolHandler
   @Override
   public boolean applyDamage(World world, ItemStack itemStack, int damage, EntityPlayer player, boolean simulate) {
 
-    ToolCommons.damageItem(itemStack, damage, player, ModuleBotaniaConfig.MANA_PER_TOOL_DAMAGE);
-    boolean broken = itemStack.getMaxDamage() == itemStack.getItemDamage();
+    if (ModuleBotaniaConfig.ENABLE_CRAFT_WITH_MANA) {
+      int manaToRequest = damage * ModuleBotaniaConfig.MANA_PER_TOOL_DAMAGE;
+      boolean playerHasEnoughMana = ManaItemHandler.requestManaExactForTool(itemStack, player, manaToRequest, simulate);
 
-    if (broken) {
-      itemStack.shrink(1);
+      if (!playerHasEnoughMana) {
+        // Player does not have enough mana to cover the cost, damage the tool.
+        return DefaultToolHandler.INSTANCE.applyDamage(world, itemStack, damage, player, simulate);
+
+      } else {
+        // Player has enough mana to cover the cost, return false to indicate the tool was not broken.
+        return false;
+      }
+
+    } else {
+      // If crafting with mana is disabled, damage the tool.
+      return DefaultToolHandler.INSTANCE.applyDamage(world, itemStack, damage, player, simulate);
     }
-
-    return broken;
   }
 }
