@@ -2,6 +2,8 @@ package com.codetaylor.mc.artisanintegrations.modules.ftgu.requirement;
 
 import com.codetaylor.mc.artisanintegrations.modules.ftgu.ModuleFTGU;
 import com.codetaylor.mc.artisanworktables.api.recipe.requirement.IRequirement;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nonnull;
@@ -36,21 +38,16 @@ public class FTGURequirement
   @Override
   public boolean shouldJEIHideOnLoad() {
 
-    return false;
+    return true;
   }
 
   @Override
   public boolean shouldJEIHideOnUpdate() {
 
-    /*EntityPlayerSP player = Minecraft.getMinecraft().player;
-
-    IStageData playerData = GameStageHelper.getPlayerData(player);
-    Collection<String> unlockedStages = playerData.getStages();
-
-    GameStagesRequirementContext context = new GameStagesRequirementContext();
-    context.setUnlockedStages(unlockedStages);
-    return !this.match(context);*/
-    return false;
+    EntityPlayerSP player = Minecraft.getMinecraft().player;
+    FTGURequirementContext context = new FTGURequirementContext();
+    context.initialize(player);
+    return !this.match(context);
   }
 
   @Override

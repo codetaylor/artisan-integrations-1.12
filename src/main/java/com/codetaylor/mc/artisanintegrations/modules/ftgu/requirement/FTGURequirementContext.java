@@ -22,6 +22,11 @@ public class FTGURequirementContext
   public void initialize(ICraftingContext craftingContext) {
 
     EntityPlayer player = craftingContext.getPlayer();
+    this.initialize(player);
+  }
+
+  /* package */ void initialize(EntityPlayer player) {
+
     Collection<ITechnology> technologies = FTGUAPI.technologyManager.getTechnologies();
     List<String> researched = new ArrayList<>(technologies.size());
 

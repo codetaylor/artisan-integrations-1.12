@@ -46,6 +46,13 @@ public class ModArtisanIntegrations {
   @Mod.EventHandler
   public void onConstructionEvent(FMLConstructionEvent event) {
 
+    if (Loader.isModLoaded("ftgumod")) {
+      ModArtisanIntegrations.INSTANCE.registerIntegrationHandler(
+          "ftgumod",
+          "com.codetaylor.mc.athenaeum.integration.SimplePluginHandler"
+      );
+    }
+
     Map<String, Class<? extends ModuleBase>> register = new LinkedHashMap<>();
 
     register.put("gamestages", ModuleGameStages.class);
@@ -63,6 +70,11 @@ public class ModArtisanIntegrations {
 
     this.moduleManager.onConstructionEvent();
     this.moduleManager.routeFMLStateEvent(event);
+  }
+
+  public void registerIntegrationHandler(String modId, String handler) {
+
+    this.moduleManager.registerIntegrationHandler(modId, handler);
   }
 
   @Mod.EventHandler

@@ -29,6 +29,11 @@ public class ModuleFTGU
         "crafttweaker",
         "com.codetaylor.mc.artisanintegrations.modules.ftgu.crafttweaker.ZenFTGURequirement"
     );
+
+    this.registerIntegrationPlugin(
+        "ftgumod",
+        "com.codetaylor.mc.artisanintegrations.modules.ftgu.plugin.PluginFTGU"
+    );
   }
 
   @SubscribeEvent
