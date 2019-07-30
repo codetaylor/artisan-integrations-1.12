@@ -8,13 +8,9 @@ import com.codetaylor.mc.artisanworktables.api.ArtisanToolHandlers;
 import com.codetaylor.mc.artisanworktables.api.event.ArtisanCustomToolMaterialRegistrationEvent;
 import com.codetaylor.mc.artisanworktables.api.tool.CustomToolMaterialRegistrationEntry;
 import com.codetaylor.mc.athenaeum.module.ModuleBase;
-import com.codetaylor.mc.athenaeum.registry.Registry;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
@@ -22,15 +18,10 @@ public class ModuleBotania
     extends ModuleBase {
 
   public static final String MOD_ID = ModArtisanIntegrations.MOD_ID;
-  public static final CreativeTabs CREATIVE_TAB = ModArtisanIntegrations.CREATIVE_TAB;
-
-  private static final Logger LOGGER = LogManager.getLogger(ModuleBotania.class);
 
   public ModuleBotania() {
 
     super(0, MOD_ID);
-    this.setRegistry(new Registry(MOD_ID, CREATIVE_TAB));
-    this.enableAutoRegistry();
 
     MinecraftForge.EVENT_BUS.register(this);
   }

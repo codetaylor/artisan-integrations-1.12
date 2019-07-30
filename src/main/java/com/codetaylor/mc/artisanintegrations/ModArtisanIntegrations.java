@@ -5,11 +5,9 @@ import com.codetaylor.mc.artisanintegrations.modules.ftgu.ModuleFTGU;
 import com.codetaylor.mc.artisanintegrations.modules.gamestages.ModuleGameStages;
 import com.codetaylor.mc.artisanintegrations.modules.gregtech.ModuleGregTech;
 import com.codetaylor.mc.artisanintegrations.modules.reskillable.ModuleReskillable;
-import com.codetaylor.mc.artisanworktables.modules.worktables.ModuleWorktables;
 import com.codetaylor.mc.athenaeum.gui.GuiHandler;
 import com.codetaylor.mc.athenaeum.module.ModuleBase;
 import com.codetaylor.mc.athenaeum.module.ModuleManager;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.*;
@@ -33,8 +31,6 @@ public class ModArtisanIntegrations {
 
   @Mod.Instance
   public static ModArtisanIntegrations INSTANCE;
-
-  public static final CreativeTabs CREATIVE_TAB = ModuleWorktables.CREATIVE_TAB;
 
   private final ModuleManager moduleManager;
 
