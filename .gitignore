@@ -21,4 +21,5 @@ build
 eclipse
 run
 libs/
+libs-off/
 /classes/
