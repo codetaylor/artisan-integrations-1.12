@@ -1,0 +1,16 @@
+site_name: Artisan Integrations
+
+pages:
+  - Introduction: index.md
+  - ChangeLog: changelog.md
+  - Integrations:
+    - From the Ground Up: ftgu.md
+    - GameStages: gamestages.md
+    - Reskillable: reskillable.md
+  - Development:
+    - Contributor's License Agreement: cla.md
+
+theme: readthedocs
+
+markdown_extensions:
+  - admonition
