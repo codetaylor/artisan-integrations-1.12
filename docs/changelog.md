@@ -1,3 +1,10 @@
+# 1.1.0
+
+  * **Added:**
+    * JSON files to create / update / delete Botania mana-powered tools [(AW#189)](https://github.com/codetaylor/artisan-worktables/issues/189)
+
+---
+
 1.0.0
 
   * Notes:
