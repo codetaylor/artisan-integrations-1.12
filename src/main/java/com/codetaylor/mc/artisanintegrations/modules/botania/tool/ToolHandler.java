@@ -19,6 +19,12 @@ public class ToolHandler
   }
 
   @Override
+  public boolean matches(ItemStack tool, ItemStack toolToMatch) {
+
+    return (tool.getItem() == toolToMatch.getItem());
+  }
+
+  @Override
   public boolean canAcceptAllDamage(ItemStack itemStack, int damage) {
 
     return itemStack.getMaxDamage() - itemStack.getItemDamage() >= damage;

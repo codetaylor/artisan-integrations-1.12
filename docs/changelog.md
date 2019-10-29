@@ -1,16 +1,23 @@
-# 1.1.0
+**1.1.1**
+
+  * **Fixed:**
+    * GregTech meta tools don't match correctly [(AW#205)](https://github.com/codetaylor/artisan-worktables/issues/205)
+
+---
+
+#1.1.0
 
   * **Added:**
     * JSON files to create / update / delete Botania mana-powered tools [(AW#189)](https://github.com/codetaylor/artisan-worktables/issues/189)
 
 ---
 
-1.0.0
+#1.0.0
 
-  * Notes:
+  * **Notes:**
     * If used with FtGU, must be used with version >= FTGU-1.12.2-b1.3.16
 
-  * Added:
+  * **Added:**
     * GTCE tool handler:
         * use GT tools
     * GameStages recipe requirement:
