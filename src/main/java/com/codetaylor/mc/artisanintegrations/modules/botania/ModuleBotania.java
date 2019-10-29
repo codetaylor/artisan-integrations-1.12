@@ -11,11 +11,13 @@ import com.codetaylor.mc.artisanworktables.api.event.ArtisanCustomToolMaterialRe
 import com.codetaylor.mc.artisanworktables.api.tool.CustomToolMaterialRegistrationEntry;
 import com.codetaylor.mc.athenaeum.module.ModuleBase;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -46,7 +48,11 @@ public class ModuleBotania
   @SubscribeEvent
   public void on(ArtisanCustomToolMaterialRegistrationEvent event) {
 
-    Path configurationPath = Paths.get(this.getConfigurationDirectory().toString(), ModuleBotania.MOD_ID);
+    // 2019-10-29 Use Loader#getConfigDir instead of this.getConfigurationDirectory()
+    // because when this event is fired, the pre-init for this mod hasn't run yet and
+    // the module's configuration directory isn't set yet. Ends up throwing a NPE.
+    File configDir = Loader.instance().getConfigDir();
+    Path configurationPath = Paths.get(configDir.getPath(), ModuleBotania.MOD_ID);
 
     CustomToolMaterialList customToolMaterialList = JsonInitializer.generateAndReadCustom(
         configurationPath,

@@ -1,3 +1,10 @@
+**1.1.2**
+
+  * **Fixed:**
+    * NPE [(AW#206)](https://github.com/codetaylor/artisan-worktables/issues/206)
+
+---
+
 **1.1.1**
 
   * **Fixed:**
