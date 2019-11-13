@@ -4,6 +4,7 @@ import com.codetaylor.mc.artisanintegrations.modules.botania.ModuleBotania;
 import com.codetaylor.mc.artisanintegrations.modules.ftgu.ModuleFTGU;
 import com.codetaylor.mc.artisanintegrations.modules.gamestages.ModuleGameStages;
 import com.codetaylor.mc.artisanintegrations.modules.gregtech.ModuleGregTech;
+import com.codetaylor.mc.artisanintegrations.modules.patchouli.ModulePatchouli;
 import com.codetaylor.mc.artisanintegrations.modules.reskillable.ModuleReskillable;
 import com.codetaylor.mc.athenaeum.gui.GuiHandler;
 import com.codetaylor.mc.athenaeum.module.ModuleBase;
@@ -56,6 +57,7 @@ public class ModArtisanIntegrations {
     register.put("gregtech", ModuleGregTech.class);
     register.put("botania", ModuleBotania.class);
     register.put("ftgumod", ModuleFTGU.class);
+    register.put("patchouli", ModulePatchouli.class);
 
     register.forEach((key, value) -> {
 

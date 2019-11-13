@@ -25,7 +25,17 @@ archivesBaseName = "artisanintegrations"
 
 project.ext.athenaeum_version = "1.12.2-1.15.0"
 project.ext.artisanworktables_version = "1.12.2-1.22.11"
-project.ext.dependencies = ',dependencies = "required-after:athenaeum@[' + project.ext.athenaeum_version + ',);required-after:artisanworktables@[' + project.ext.artisanworktables_version + ',);after:crafttweaker@[4.1.11.500,);after:gamestages@[2.0.90,);after:reskillable;after:botania;after:gregtech;after:ftgumod@[b1.3.16,)"'
+project.ext.dependencies = ',dependencies = "' +
+        'required-after:athenaeum@[' + project.ext.athenaeum_version + ',);' +
+        'required-after:artisanworktables@[' + project.ext.artisanworktables_version + ',);' +
+        'after:crafttweaker@[4.1.11.500,);' +
+        'after:gamestages@[2.0.90,);' +
+        'after:reskillable;' +
+        'after:botania;' +
+        'after:gregtech;' +
+        'after:ftgumod@[b1.3.16,);' +
+        'after:patchouli;' +
+        '"'
 
 compileJava.doFirst {
     project.sourceSets.main.java.srcDirs.each { dir ->
@@ -79,6 +89,9 @@ repositories {
         url "http://maven.blamejared.com/"
     }
 
+    // patchouli
+    maven { url 'https://maven.blamejared.com' }
+
     flatDir {
         dirs 'libs'
     }
@@ -90,6 +103,7 @@ dependencies {
     compile name: "gregtech-1.12.2-1.8.1.404"
     compile name: "Botania+r1.10-361"
     compile name: "ftgu-1.12.2-b1.3.16"
+    compile "vazkii.patchouli:Patchouli:1.0-20.108"
     deobfCompile "codersafterdark.reskillable:Reskillable:1.12.2-1.12.5-SNAPSHOT.126"
 }
 
