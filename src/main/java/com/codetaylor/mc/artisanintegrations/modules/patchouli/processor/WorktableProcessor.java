@@ -1,18 +1,15 @@
 package com.codetaylor.mc.artisanintegrations.modules.patchouli.processor;
 
-import com.codetaylor.mc.artisanworktables.ModArtisanWorktables;
 import com.codetaylor.mc.artisanworktables.api.ArtisanAPI;
-import com.codetaylor.mc.artisanworktables.api.ArtisanToolHandlers;
 import com.codetaylor.mc.artisanworktables.api.internal.recipe.IArtisanItemStack;
 import com.codetaylor.mc.artisanworktables.api.internal.recipe.OutputWeightPair;
 import com.codetaylor.mc.artisanworktables.api.internal.reference.EnumType;
 import com.codetaylor.mc.artisanworktables.api.recipe.IArtisanRecipe;
+import com.codetaylor.mc.artisanworktables.modules.worktables.ModuleWorktables;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import vazkii.patchouli.api.IComponentProcessor;
 import vazkii.patchouli.api.IVariableProvider;
 import vazkii.patchouli.common.util.ItemStackUtil;
@@ -22,8 +19,8 @@ import java.util.Arrays;
 public class WorktableProcessor
     implements IComponentProcessor {
 
-  private String tableName;
-  private IArtisanRecipe recipe;
+  protected String tableName;
+  protected IArtisanRecipe recipe;
 
   @Override
   public void setup(IVariableProvider<String> variables) {
@@ -31,6 +28,10 @@ public class WorktableProcessor
     String recipe = variables.get("recipe");
     this.tableName = recipe.split(":")[0];
     this.recipe = ArtisanAPI.getRecipe(recipe);
+
+    if (this.recipe == null) {
+      throw new IllegalArgumentException("Can't find Artisan Worktables recipe with name " + recipe);
+    }
   }
 
   @Override
@@ -39,7 +40,7 @@ public class WorktableProcessor
     if (this.recipe != null) {
 
       if ("table_image".equals(key)) {
-        return "artisanworktables:textures/gui/worktable_" + this.tableName + ".png";
+        return this.getTableBackgroundImage(this.tableName);
 
       } else if (key.startsWith("item")) {
         int index = Integer.parseInt(key.substring(4)) - 1;
@@ -118,13 +119,21 @@ public class WorktableProcessor
       } else if ("table_item".equals(key)) {
 
         EnumType type = EnumType.fromName(this.tableName);
-        ResourceLocation resourceLocation;
-        resourceLocation = new ResourceLocation(ModArtisanWorktables.MOD_ID, "worktable");
-        Item item = ForgeRegistries.ITEMS.getValue(resourceLocation);
+        Item item = this.getTableItem();
         return (item == null) ? "" : ItemStackUtil.serializeStack(new ItemStack(item, 1, type.getMeta()));
       }
     }
 
     return null;
+  }
+
+  protected Item getTableItem() {
+
+    return Item.getItemFromBlock(ModuleWorktables.Blocks.WORKTABLE);
+  }
+
+  protected String getTableBackgroundImage(String tableName) {
+
+    return "artisanworktables:textures/gui/worktable_" + tableName + ".png";
   }
 }

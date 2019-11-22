@@ -30,7 +30,8 @@ public class ModulePatchouli
     super.onClientPreInitializationEvent(event);
 
     this.registerIncludes(
-        "worktable"
+        "worktable",
+        "workstation"
     );
   }
 

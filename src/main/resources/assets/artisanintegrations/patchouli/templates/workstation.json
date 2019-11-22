@@ -1,5 +1,5 @@
 {
-  "processor": "com.codetaylor.mc.artisanintegrations.modules.patchouli.processor.WorktableProcessor",
+  "processor": "com.codetaylor.mc.artisanintegrations.modules.patchouli.processor.WorkstationProcessor",
   "components": [
     {
       "group": "header",
@@ -12,16 +12,16 @@
       "y": 10, "x": 0,
       "type": "image",
       "image": "#table_image",
-      "width": 176, "height": 80,
+      "width": 176, "height": 98,
       "u": 0, "v": 0,
       "texture_width": 256, "texture_height": 256
     },
     {
-      "y": 90, "x": 0,
+      "y": 108, "x": 0,
       "type": "image",
       "image": "#table_image",
       "width": 176, "height": 4,
-      "u": 0, "v": 162,
+      "u": 0, "v": 185,
       "texture_width": 256, "texture_height": 256
     },
     {"type": "item", "item": "#item1", "x": 20, "y": 27},
@@ -34,11 +34,17 @@
     {"type": "item", "item": "#item8", "x": 38, "y": 63},
     {"type": "item", "item": "#item9", "x": 56, "y": 63},
     {"type": "item", "item": "#output", "x": 115, "y": 45},
-    {"type": "item", "item": "#tool1", "guard": "#tool1->exists", "x": 78, "y": 45},
+    {"type": "item", "item": "#tool1", "guard": "#tool1->exists", "x": 78, "y": 34},
     {
       "type": "custom",
       "class": "com.codetaylor.mc.artisanintegrations.modules.patchouli.component.TextComponent",
-      "text": "-#tool_damage1#", "guard": "#tool1->exists", "x": 83, "y": 56
+      "text": "-#tool_damage1#", "guard": "#tool1->exists", "x": 83, "y": 45
+    },
+    {"type": "item", "item": "#tool2", "guard": "#tool2->exists", "x": 78, "y": 56},
+    {
+      "type": "custom",
+      "class": "com.codetaylor.mc.artisanintegrations.modules.patchouli.component.TextComponent",
+      "text": "-#tool_damage2#", "guard": "#tool2->exists", "x": 83, "y": 67
     },
     {"type": "item", "item": "#extra_item1", "x": 152, "y": 27, "guard": "#extra_item1->exists"},
     {
@@ -76,14 +82,23 @@
       "type": "text",
       "guard": "#text_left->exists",
       "text": "#text_left",
-      "y": 96
+      "y": 114
     },
     {
       "type": "text",
       "guard": "#text_right->exists",
       "text": "#text_right",
       "x": 125,
-      "y": 96
-    }
+      "y": 114
+    },
+    {"type": "item", "item": "#secondary_item1", "x": 8, "y": 85},
+    {"type": "item", "item": "#secondary_item2", "x": 26, "y": 85},
+    {"type": "item", "item": "#secondary_item3", "x": 44, "y": 85},
+    {"type": "item", "item": "#secondary_item4", "x": 62, "y": 85},
+    {"type": "item", "item": "#secondary_item5", "x": 80, "y": 85},
+    {"type": "item", "item": "#secondary_item6", "x": 98, "y": 85},
+    {"type": "item", "item": "#secondary_item7", "x": 116, "y": 85},
+    {"type": "item", "item": "#secondary_item8", "x": 134, "y": 85},
+    {"type": "item", "item": "#secondary_item9", "x": 152, "y": 85}
   ]
 }
