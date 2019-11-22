@@ -25,7 +25,7 @@ archivesBaseName = "artisanintegrations"
 
 project.ext.athenaeum_version = "1.12.2-1.15.0"
 project.ext.artisanworktables_version = "1.12.2-1.22.11"
-project.ext.dependencies = ',dependencies = "' +
+/*project.ext.dependencies = ',dependencies = "' +
         'required-after:athenaeum@[' + project.ext.athenaeum_version + ',);' +
         'required-after:artisanworktables@[' + project.ext.artisanworktables_version + ',);' +
         'after:crafttweaker@[4.1.11.500,);' +
@@ -35,7 +35,7 @@ project.ext.dependencies = ',dependencies = "' +
         'after:gregtech;' +
         'after:ftgumod@[b1.3.16,);' +
         'after:patchouli;' +
-        '"'
+        '"'*/
 
 compileJava.doFirst {
     project.sourceSets.main.java.srcDirs.each { dir ->
@@ -46,9 +46,9 @@ compileJava.doFirst {
             filter {
                 it.replaceAll('@@VERSION@@', project.version)
             }
-            filter {
+            /*filter {
                 it.replaceAll('//@@DEPENDENCIES@@', project.ext.dependencies)
-            }
+            }*/
             duplicatesStrategy = DuplicatesStrategy.EXCLUDE
         }
         println "   [OK] Preprocessed [${dir}]"

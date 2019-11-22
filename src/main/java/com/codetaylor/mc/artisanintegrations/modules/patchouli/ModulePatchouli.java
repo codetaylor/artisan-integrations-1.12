@@ -6,6 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.IResource;
 import net.minecraft.client.resources.IResourceManager;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import vazkii.patchouli.api.PatchouliAPI;
@@ -18,9 +19,19 @@ public class ModulePatchouli
   private static final String TEMPLATE_FOLDER = "patchouli/templates/";
   private static final Logger LOGGER = LogManager.getLogger(ModulePatchouli.class);
 
-  protected ModulePatchouli() {
+  public ModulePatchouli() {
 
     super(0, MOD_ID);
+  }
+
+  @Override
+  public void onClientPreInitializationEvent(FMLPreInitializationEvent event) {
+
+    super.onClientPreInitializationEvent(event);
+
+    this.registerIncludes(
+        "worktable"
+    );
   }
 
   private void registerIncludes(String... names) {
@@ -32,7 +43,6 @@ public class ModulePatchouli
 
   private void registerInclude(String name) {
 
-    name = "include/" + name;
     final ResourceLocation internalResourceLocation = new ResourceLocation(MOD_ID, TEMPLATE_FOLDER + name + ".json");
     final ResourceLocation externalResourceLocation = new ResourceLocation(MOD_ID, name);
 
