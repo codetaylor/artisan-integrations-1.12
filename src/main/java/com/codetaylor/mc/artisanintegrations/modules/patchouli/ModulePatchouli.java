@@ -31,7 +31,8 @@ public class ModulePatchouli
 
     this.registerIncludes(
         "worktable",
-        "workstation"
+        "workstation",
+        "workshop"
     );
   }
 
