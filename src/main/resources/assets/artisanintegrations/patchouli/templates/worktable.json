@@ -6,6 +6,13 @@
       "type": "header",
       "text": "#output->iname",
       "x": -1,
+      "guard": "#header->exists->inv"
+    },
+    {
+      "group": "header",
+      "type": "header",
+      "text": "#header",
+      "x": -1,
       "guard": "#header->exists"
     },
     {
