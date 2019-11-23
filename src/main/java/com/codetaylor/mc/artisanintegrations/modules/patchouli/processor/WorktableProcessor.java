@@ -1,6 +1,7 @@
 package com.codetaylor.mc.artisanintegrations.modules.patchouli.processor;
 
 import com.codetaylor.mc.artisanworktables.api.ArtisanAPI;
+import com.codetaylor.mc.artisanworktables.api.internal.recipe.IArtisanIngredient;
 import com.codetaylor.mc.artisanworktables.api.internal.recipe.IArtisanItemStack;
 import com.codetaylor.mc.artisanworktables.api.internal.recipe.OutputWeightPair;
 import com.codetaylor.mc.artisanworktables.api.internal.reference.EnumType;
@@ -15,6 +16,7 @@ import vazkii.patchouli.api.IVariableProvider;
 import vazkii.patchouli.common.util.ItemStackUtil;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class WorktableProcessor
     implements IComponentProcessor {
@@ -44,7 +46,13 @@ public class WorktableProcessor
 
       } else if (key.startsWith("item")) {
         int index = Integer.parseInt(key.substring(4)) - 1;
-        Ingredient ingredient = this.recipe.getIngredientList().get(index).toIngredient();
+        List<IArtisanIngredient> ingredientList = this.recipe.getIngredientList();
+
+        if (index >= ingredientList.size()) {
+          return "";
+        }
+
+        Ingredient ingredient = ingredientList.get(index).toIngredient();
         ItemStack[] stacks = ingredient.getMatchingStacks();
         ItemStack stack = stacks.length == 0 ? ItemStack.EMPTY : stacks[0];
 
@@ -69,13 +77,16 @@ public class WorktableProcessor
 
         switch (index) {
           case 0:
-            return ItemStackUtil.serializeStack(this.recipe.getSecondaryOutput().toItemStack());
+            IArtisanItemStack secondaryOutput = this.recipe.getSecondaryOutput();
+            return secondaryOutput.isEmpty() ? "" : ItemStackUtil.serializeStack(secondaryOutput.toItemStack());
           case 1:
-            return ItemStackUtil.serializeStack(this.recipe.getTertiaryOutput().toItemStack());
+            IArtisanItemStack tertiaryOutput = this.recipe.getTertiaryOutput();
+            return tertiaryOutput.isEmpty() ? "" : ItemStackUtil.serializeStack(tertiaryOutput.toItemStack());
           case 2:
-            return ItemStackUtil.serializeStack(this.recipe.getQuaternaryOutput().toItemStack());
+            IArtisanItemStack quaternaryOutput = this.recipe.getQuaternaryOutput();
+            return quaternaryOutput.isEmpty() ? "" : ItemStackUtil.serializeStack(quaternaryOutput.toItemStack());
           default:
-            return ItemStackUtil.serializeStack(ItemStack.EMPTY);
+            return "";
         }
 
       } else if ("output".equals(key)) {
@@ -93,11 +104,11 @@ public class WorktableProcessor
       } else if (key.startsWith("tool")) {
         int index = Integer.parseInt(key.substring(4)) - 1;
         IArtisanItemStack[] tools = this.recipe.getTools(index);
-        ItemStack[] itemStacks = Arrays.stream(tools)
-            .map(IArtisanItemStack::toItemStack)
-            .toArray(ItemStack[]::new);
 
-        if (itemStacks.length > 0) {
+        if (tools.length > 0) {
+          ItemStack[] itemStacks = Arrays.stream(tools)
+              .map(IArtisanItemStack::toItemStack)
+              .toArray(ItemStack[]::new);
           Ingredient ingredient = Ingredient.fromStacks(itemStacks);
           return ItemStackUtil.serializeIngredient(ingredient);
         }

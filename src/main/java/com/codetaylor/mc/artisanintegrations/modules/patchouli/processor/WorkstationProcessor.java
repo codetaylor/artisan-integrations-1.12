@@ -23,6 +23,11 @@ public class WorkstationProcessor
       if (key.startsWith("secondary_item")) {
         int index = Integer.parseInt(key.substring(14)) - 1;
         List<IArtisanIngredient> secondaryIngredients = this.recipe.getSecondaryIngredients();
+
+        if (index >= secondaryIngredients.size()) {
+          return "";
+        }
+
         Ingredient ingredient = secondaryIngredients.get(index).toIngredient();
         ItemStack[] stacks = ingredient.getMatchingStacks();
         ItemStack stack = stacks.length == 0 ? ItemStack.EMPTY : stacks[0];
