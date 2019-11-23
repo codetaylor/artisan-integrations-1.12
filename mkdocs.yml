@@ -7,6 +7,7 @@ pages:
     - From the Ground Up: ftgu.md
     - GameStages: gamestages.md
     - Reskillable: reskillable.md
+    - Patchouli: patchouli.md
   - Development:
     - Contributor's License Agreement: cla.md
 

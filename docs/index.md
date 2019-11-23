@@ -18,6 +18,8 @@ Artisan Integrations provides mod integrations for Artisan Worktables.
     * Supports GT:CE tools in AW recipes
 * **Reskillable** ([link](https://www.curseforge.com/minecraft/mc-mods/reskillable))
     * Supports locking AW recipes with Reskillable requirements
+* **Patchouli** ([link](https://www.curseforge.com/minecraft/mc-mods/patchouli))
+    * Exposes Artisan Worktables recipe templates
 
 ---
 

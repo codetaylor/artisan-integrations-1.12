@@ -1,3 +1,10 @@
+#1.2.0
+
+  * **Added:**
+    * Patchouli integration [(AW#199)](https://github.com/codetaylor/artisan-worktables/issues/199)
+
+---
+
 **1.1.2**
 
   * **Fixed:**
