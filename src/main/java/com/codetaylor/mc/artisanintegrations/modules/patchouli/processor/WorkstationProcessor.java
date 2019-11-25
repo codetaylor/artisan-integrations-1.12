@@ -1,6 +1,7 @@
 package com.codetaylor.mc.artisanintegrations.modules.patchouli.processor;
 
 import com.codetaylor.mc.artisanworktables.api.internal.recipe.IArtisanIngredient;
+import com.codetaylor.mc.artisanworktables.api.internal.reference.EnumTier;
 import com.codetaylor.mc.artisanworktables.modules.worktables.ModuleWorktables;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -50,4 +51,9 @@ public class WorkstationProcessor
     return "artisanworktables:textures/gui/workstation_" + tableName + ".png";
   }
 
+  @Override
+  protected EnumTier getTableTier() {
+
+    return EnumTier.WORKSTATION;
+  }
 }

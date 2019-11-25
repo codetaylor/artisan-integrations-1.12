@@ -1,5 +1,6 @@
 package com.codetaylor.mc.artisanintegrations.modules.patchouli.processor;
 
+import com.codetaylor.mc.artisanworktables.api.internal.reference.EnumTier;
 import com.codetaylor.mc.artisanworktables.modules.worktables.ModuleWorktables;
 import net.minecraft.item.Item;
 
@@ -18,4 +19,9 @@ public class WorkshopProcessor
     return "artisanworktables:textures/gui/workshop_" + tableName + ".png";
   }
 
+  @Override
+  protected EnumTier getTableTier() {
+
+    return EnumTier.WORKSHOP;
+  }
 }

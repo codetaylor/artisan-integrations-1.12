@@ -4,6 +4,7 @@ import com.codetaylor.mc.artisanworktables.api.ArtisanAPI;
 import com.codetaylor.mc.artisanworktables.api.internal.recipe.IArtisanIngredient;
 import com.codetaylor.mc.artisanworktables.api.internal.recipe.IArtisanItemStack;
 import com.codetaylor.mc.artisanworktables.api.internal.recipe.OutputWeightPair;
+import com.codetaylor.mc.artisanworktables.api.internal.reference.EnumTier;
 import com.codetaylor.mc.artisanworktables.api.internal.reference.EnumType;
 import com.codetaylor.mc.artisanworktables.api.recipe.IArtisanRecipe;
 import com.codetaylor.mc.artisanworktables.modules.worktables.ModuleWorktables;
@@ -45,14 +46,36 @@ public class WorktableProcessor
         return this.getTableBackgroundImage(this.tableName);
 
       } else if (key.startsWith("item")) {
-        int index = Integer.parseInt(key.substring(4)) - 1;
-        List<IArtisanIngredient> ingredientList = this.recipe.getIngredientList();
 
-        if (index >= ingredientList.size()) {
-          return "";
+        int tableIndex = Integer.parseInt(key.substring(4)) - 1;
+        List<IArtisanIngredient> ingredientList = this.recipe.getIngredientList();
+        int recipeIndex;
+
+        if (this.recipe.isShaped()) {
+          int tableWidth = (this.getTableTier() == EnumTier.WORKSHOP) ? 5 : 3;
+          int tableHeight = (this.getTableTier() == EnumTier.WORKSHOP) ? 5 : 3;
+
+          int col = tableIndex % tableWidth;
+          int recipeWidth = this.recipe.getWidth();
+          int row = tableIndex / tableHeight;
+          int recipeHeight = this.recipe.getHeight();
+
+          if (col >= recipeWidth || row >= recipeHeight) {
+            return "";
+          }
+
+          recipeIndex = tableIndex - row * (tableWidth - recipeWidth);
+
+        } else {
+
+          if (tableIndex >= ingredientList.size()) {
+            return "";
+          }
+
+          recipeIndex = tableIndex;
         }
 
-        Ingredient ingredient = ingredientList.get(index).toIngredient();
+        Ingredient ingredient = ingredientList.get(recipeIndex).toIngredient();
         ItemStack[] stacks = ingredient.getMatchingStacks();
         ItemStack stack = stacks.length == 0 ? ItemStack.EMPTY : stacks[0];
 
@@ -146,5 +169,10 @@ public class WorktableProcessor
   protected String getTableBackgroundImage(String tableName) {
 
     return "artisanworktables:textures/gui/worktable_" + tableName + ".png";
+  }
+
+  protected EnumTier getTableTier() {
+
+    return EnumTier.WORKTABLE;
   }
 }
