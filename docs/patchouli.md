@@ -70,9 +70,7 @@ The default item name header can be overridden for all templates by supplying a 
   "pages": [
     {
       "type": "artisanintegrations:workshop",
-      "recipe": "farmer:workshop_recipe",
-      "text_left": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eros nibh, malesuada ac ligula maximus iaculis.",
-      "text_right": "Donec turpis dui, laoreet sed fringilla ut, iaculis in nisi. Vestibulum tincidunt sapien sed metus facilisis hendrerit."
+      "recipe": "farmer:workshop_recipe"
     },
     {
       "type": "text",
