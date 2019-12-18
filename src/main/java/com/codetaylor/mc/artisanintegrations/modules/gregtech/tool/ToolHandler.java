@@ -7,6 +7,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
+
 public class ToolHandler
     implements IToolHandler {
 
@@ -30,7 +32,7 @@ public class ToolHandler
   }
 
   @Override
-  public boolean applyDamage(World world, ItemStack itemStack, int damage, EntityPlayer player, boolean simulate) {
+  public boolean applyDamage(World world, ItemStack itemStack, int damage, @Nullable EntityPlayer player, boolean simulate) {
 
     // The server tag object for the stack is ending up on the client in
     // a single player setup. The same instance - so any changes made on the

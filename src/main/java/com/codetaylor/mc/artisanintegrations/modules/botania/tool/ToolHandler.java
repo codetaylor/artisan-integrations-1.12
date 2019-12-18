@@ -9,6 +9,8 @@ import net.minecraft.world.World;
 import vazkii.botania.api.mana.IManaUsingItem;
 import vazkii.botania.api.mana.ManaItemHandler;
 
+import javax.annotation.Nullable;
+
 public class ToolHandler
     implements IToolHandler {
 
@@ -31,9 +33,9 @@ public class ToolHandler
   }
 
   @Override
-  public boolean applyDamage(World world, ItemStack itemStack, int damage, EntityPlayer player, boolean simulate) {
+  public boolean applyDamage(World world, ItemStack itemStack, int damage, @Nullable EntityPlayer player, boolean simulate) {
 
-    if (ModuleBotaniaConfig.ENABLE_CRAFT_WITH_MANA) {
+    if (player != null && ModuleBotaniaConfig.ENABLE_CRAFT_WITH_MANA) {
       int manaToRequest = damage * ModuleBotaniaConfig.MANA_PER_TOOL_DAMAGE;
       boolean playerHasEnoughMana = ManaItemHandler.requestManaExactForTool(itemStack, player, manaToRequest, simulate);
 
