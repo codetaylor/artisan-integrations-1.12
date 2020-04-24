@@ -1,3 +1,7 @@
+**1.2.1**
+
+  * Updated to account for changes in Artisan Worktables' API
+
 #1.2.0
 
   * **Added:**
