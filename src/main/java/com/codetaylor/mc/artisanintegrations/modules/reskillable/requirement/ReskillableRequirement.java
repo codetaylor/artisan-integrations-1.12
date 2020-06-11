@@ -30,6 +30,6 @@ public class ReskillableRequirement
   @Override
   public boolean match(ReskillableRequirementContext context) {
 
-    return context.getPlayerData().matchStats(this.requirementHolder);
+    return context.getPlayerData() != null && context.getPlayerData().matchStats(this.requirementHolder);
   }
 }

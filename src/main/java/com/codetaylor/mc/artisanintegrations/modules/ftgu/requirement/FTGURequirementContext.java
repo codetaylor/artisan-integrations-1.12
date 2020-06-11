@@ -8,10 +8,7 @@ import ftgumod.api.technology.ITechnology;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class FTGURequirementContext
     implements IRequirementContext {
@@ -21,8 +18,14 @@ public class FTGURequirementContext
   @Override
   public void initialize(ICraftingContext craftingContext) {
 
-    EntityPlayer player = craftingContext.getPlayer();
-    this.initialize(player);
+    Optional<EntityPlayer> optionalPlayer = craftingContext.getPlayer();
+
+    if (optionalPlayer.isPresent()) {
+      initialize(optionalPlayer.get());
+
+    } else {
+      this.researchedTechnologies = Collections.emptyList();
+    }
   }
 
   /* package */ void initialize(EntityPlayer player) {

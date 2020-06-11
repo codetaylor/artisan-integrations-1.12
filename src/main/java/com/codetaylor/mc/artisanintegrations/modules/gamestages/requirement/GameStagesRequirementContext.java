@@ -6,10 +6,7 @@ import net.darkhax.gamestages.GameStageHelper;
 import net.darkhax.gamestages.data.IStageData;
 import net.minecraft.entity.player.EntityPlayer;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class GameStagesRequirementContext
     implements IRequirementContext {
@@ -19,10 +16,17 @@ public class GameStagesRequirementContext
   @Override
   public void initialize(ICraftingContext craftingContext) {
 
-    EntityPlayer player = craftingContext.getPlayer();
-    IStageData playerData = GameStageHelper.getPlayerData(player);
-    Collection<String> unlockedStages = playerData.getStages();
-    this.setUnlockedStages(unlockedStages);
+    Optional<EntityPlayer> optionalPlayer = craftingContext.getPlayer();
+
+    if (optionalPlayer.isPresent()) {
+      EntityPlayer player = optionalPlayer.get();
+      IStageData playerData = GameStageHelper.getPlayerData(player);
+      Collection<String> unlockedStages = playerData.getStages();
+      this.setUnlockedStages(unlockedStages);
+
+    } else {
+      this.setUnlockedStages(Collections.emptyList());
+    }
   }
 
   /* package */ Set<String> getUnlockedStages() {
