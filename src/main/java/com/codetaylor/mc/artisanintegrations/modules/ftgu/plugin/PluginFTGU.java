@@ -1,6 +1,6 @@
 package com.codetaylor.mc.artisanintegrations.modules.ftgu.plugin;
 
-import com.codetaylor.mc.artisanworktables.modules.worktables.integration.jei.PluginJEI;
+import com.codetaylor.mc.artisanworktables.api.event.ArtisanUpdateJEIRecipeVisibilityEvent;
 import ftgumod.api.event.FTGUClientSyncEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -21,6 +21,6 @@ public class PluginFTGU {
   @SideOnly(Side.CLIENT)
   public void on(FTGUClientSyncEvent.Post event) {
 
-    PluginJEI.updateRecipeVisibility();
+    MinecraftForge.EVENT_BUS.post(new ArtisanUpdateJEIRecipeVisibilityEvent());
   }
 }

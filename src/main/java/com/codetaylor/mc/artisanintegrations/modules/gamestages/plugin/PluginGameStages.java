@@ -1,6 +1,6 @@
 package com.codetaylor.mc.artisanintegrations.modules.gamestages.plugin;
 
-import com.codetaylor.mc.artisanworktables.modules.worktables.integration.jei.PluginJEI;
+import com.codetaylor.mc.artisanworktables.api.event.ArtisanUpdateJEIRecipeVisibilityEvent;
 import net.darkhax.gamestages.event.GameStageEvent;
 import net.darkhax.gamestages.event.StagesSyncedEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -42,7 +42,7 @@ public class PluginGameStages {
   @SideOnly(Side.CLIENT)
   private void processStagedRecipes() {
 
-    PluginJEI.updateRecipeVisibility();
+    MinecraftForge.EVENT_BUS.post(new ArtisanUpdateJEIRecipeVisibilityEvent());
   }
 
 }
