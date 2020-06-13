@@ -31,11 +31,6 @@ repositories {
   mavenCentral()
 
   maven {
-    name = "CurseForge"
-    url = "https://minecraft.curseforge.com/api/maven/"
-  }
-
-  maven {
     // CraftTweaker
     // Reskillable
     url "http://maven.blamejared.com/"
