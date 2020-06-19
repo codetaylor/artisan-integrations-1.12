@@ -24,6 +24,13 @@ ext {
     ]
   ]
 
+  replace = [
+    'required-after:athenaeum;': 'required-after:athenaeum@[1.12.2-1.19.0-RC.1,);',
+    'required-after:artisanworktables;': 'required-after:artisanworktables@[1.12.2-1.23.5-RC.1,);',
+    'after:crafttweaker;': 'after:crafttweaker@[4.1.11.500,);',
+    'after:gamestages;': 'after:gamestages@[2.0.90,);',
+    'after:ftgumod;': 'after:ftgumod@[b1.3.16,);'
+  ]
 }
 
 repositories {

@@ -17,22 +17,6 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/*
-project.ext.athenaeum_version = "1.12.2-1.15.0"
-project.ext.artisanworktables_version = "1.12.2-1.22.11"
-project.ext.dependencies = ',dependencies = "' +
-        'required-after:athenaeum@[' + project.ext.athenaeum_version + ',);' +
-        'required-after:artisanworktables@[' + project.ext.artisanworktables_version + ',);' +
-        'after:crafttweaker@[4.1.11.500,);' +
-        'after:gamestages@[2.0.90,);' +
-        'after:reskillable;' +
-        'after:botania;' +
-        'after:gregtech;' +
-        'after:ftgumod@[b1.3.16,);' +
-        'after:patchouli;' +
-        '"'
- */
-
 @SuppressWarnings({"WeakerAccess", "unused"})
 @Mod(
     modid = ModArtisanIntegrations.MOD_ID,
@@ -41,12 +25,12 @@ project.ext.dependencies = ',dependencies = "' +
     dependencies =
         "required-after:athenaeum;" +
             "required-after:artisanworktables;" +
-            "after:crafttweaker@[4.1.11.500,);" +
-            "after:gamestages@[2.0.90,);" +
+            "after:crafttweaker;" +
+            "after:gamestages;" +
             "after:reskillable;" +
             "after:botania;" +
             "after:gregtech;" +
-            "after:ftgumod@[b1.3.16,);" +
+            "after:ftgumod;" +
             "after:patchouli;"
 )
 public class ModArtisanIntegrations {

@@ -37,20 +37,6 @@ println("- Mappings: " + project.ext.mappings.channel + " " + project.ext.mappin
 println("-------------------------------------------------------------")
 println()
 
-project.ext.athenaeum_version = "1.12.2-1.15.0"
-project.ext.artisanworktables_version = "1.12.2-1.22.11"
-/*project.ext.dependencies = ',dependencies = "' +
-        'required-after:athenaeum@[' + project.ext.athenaeum_version + ',);' +
-        'required-after:artisanworktables@[' + project.ext.artisanworktables_version + ',);' +
-        'after:crafttweaker@[4.1.11.500,);' +
-        'after:gamestages@[2.0.90,);' +
-        'after:reskillable;' +
-        'after:botania;' +
-        'after:gregtech;' +
-        'after:ftgumod@[b1.3.16,);' +
-        'after:patchouli;' +
-        '"'*/
-
 compileJava.doFirst {
     project.sourceSets.main.java.srcDirs.each { dir ->
         copy {
@@ -60,9 +46,11 @@ compileJava.doFirst {
             filter {
                 it.replaceAll('@@VERSION@@', project.version)
             }
-            /*filter {
-                it.replaceAll('//@@DEPENDENCIES@@', project.ext.dependencies)
-            }*/
+            project.ext.replace.each{entry ->
+                filter {
+                    it.replaceAll(entry.key, entry.value)
+                }
+            }
             duplicatesStrategy = DuplicatesStrategy.EXCLUDE
         }
         println "   [OK] Preprocessed [${dir}]"
