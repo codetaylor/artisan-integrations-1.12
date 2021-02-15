@@ -126,11 +126,10 @@ public class WorktableProcessor
 
       } else if (key.startsWith("tool")) {
         int index = Integer.parseInt(key.substring(4)) - 1;
-        IArtisanItemStack[] tools = this.recipe.getTools(index);
+        ItemStack[] tools = this.recipe.getTools(index);
 
         if (tools.length > 0) {
           ItemStack[] itemStacks = Arrays.stream(tools)
-              .map(IArtisanItemStack::toItemStack)
               .toArray(ItemStack[]::new);
           Ingredient ingredient = Ingredient.fromStacks(itemStacks);
           return ItemStackUtil.serializeIngredient(ingredient);

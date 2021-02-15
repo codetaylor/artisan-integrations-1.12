@@ -1,3 +1,13 @@
+**1.2.3**
+
+  * **Changed:**
+    * Updated to support optimization changes to Artisan Worktables
+
+  * **Required:**
+    * Artisan Worktables >= 1.12.2-1.24.2
+
+---
+
 **1.2.2**
 
   * **Changed:**
