@@ -1,3 +1,10 @@
+**1.2.4**
+
+  * **Fixed:**
+    * Dedicated server error [(AW#260)](https://github.com/codetaylor/artisan-worktables-1.12/issues/260)
+    
+---
+
 **1.2.3**
 
   * **Changed:**

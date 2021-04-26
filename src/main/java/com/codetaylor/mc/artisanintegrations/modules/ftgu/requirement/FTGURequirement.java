@@ -5,6 +5,8 @@ import com.codetaylor.mc.artisanworktables.api.recipe.requirement.IRequirement;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
@@ -35,12 +37,14 @@ public class FTGURequirement
     this.excluded = new ArrayList<>(excluded);
   }
 
+  @SideOnly(Side.CLIENT)
   @Override
   public boolean shouldJEIHideOnLoad() {
 
     return true;
   }
 
+  @SideOnly(Side.CLIENT)
   @Override
   public boolean shouldJEIHideOnUpdate() {
 
