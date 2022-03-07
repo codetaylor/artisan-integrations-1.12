@@ -1,3 +1,10 @@
+**1.3.0**
+ 
+  * **Added:**
+    * Support for GTCEu [(AW#262)](https://github.com/codetaylor/artisan-worktables/issues/262)
+
+---
+
 **1.2.4**
 
   * **Fixed:**
